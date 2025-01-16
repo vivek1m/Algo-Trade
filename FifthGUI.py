@@ -28,7 +28,6 @@ class FifthGUI(tk.Tk):
         try:
             if self.df.empty or len(self.df.columns) < 3:
                 raise ValueError("The stock data format seems incorrect or empty.")
-            # Assuming the stock price is in the 3rd-to-last column
             stock_price = self.df.iloc[0, -3]  
             self.no_stocks = math.floor(self.Amount / float(stock_price))
         except IndexError:
@@ -53,15 +52,12 @@ class FifthGUI(tk.Tk):
         self.top_frame = tk.Frame(self, bg="indigo")
         self.top_frame.grid(row=0, column=0, sticky="nsew", padx=20, pady=20)
 
-        # Center the text within each label
         screen_width = self.winfo_screenwidth()
         screen_height = self.winfo_screenheight()
         
-        # Font scaling based on screen size
         font_large = int(screen_width // 80)
         font_medium = int(screen_width // 100)
         
-        # Title text
         tk.Label(self.top_frame, text="Name of the recommended Stock :", font=f"Georgia {font_medium} bold", fg="white", bg="indigo", padx=7, pady=7).grid(row=0, column=0, sticky="ew", columnspan=2)
         tk.Label(self.top_frame, text=self.df.iloc[0, 0], font=f"Calibri {font_medium} bold", fg="black", bg="lavender", padx=5, pady=5).grid(row=1, column=0, sticky="ew", columnspan=2)
         tk.Label(self.top_frame, text=f"Latest Stock Price as of {self.df.columns[-3]}:", font=f"Georgia {font_medium} bold", fg="white", bg="indigo", padx=7, pady=7).grid(row=2, column=0, sticky="ew", columnspan=2)
@@ -101,7 +97,6 @@ class FifthGUI(tk.Tk):
         if self.img:
             can.create_image(screen_width // 2, screen_height // 4, image=self.img)  # Center the image on the canvas
 
-        # Adjust the button layout to be at the bottom and centered
         font_button = int(screen_width // 100)
 
         def submit():
@@ -109,7 +104,6 @@ class FifthGUI(tk.Tk):
             seventh = SeventhGUI.SeventhGUI()
             seventh.mainloop()
 
-        # Move the 'Next!' button to the bottom center
         tk.Button(self, text="Next!", font=f"Georgia {font_button} bold", fg="darkred", bg="lightcoral", command=submit, height=1, width=10).grid(row=2, column=0, pady=20, sticky="nsew", columnspan=2)
 
 if __name__ == "__main__":

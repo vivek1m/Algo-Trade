@@ -53,13 +53,11 @@ class SixthGUI(tk.Tk):
             print("Image 'desired.png' not found, using placeholder")
             self.img = None  # Or use a placeholder image
 
-        # Display the image or placeholder
         if self.img:
             tk.Label(self.bottom_frame, image=self.img, bg="indigo").pack(fill=tk.BOTH)
         else:
             tk.Label(self.bottom_frame, text="No image available", bg="indigo").pack(fill=tk.BOTH)
 
-        # Safely remove the image if it exists
         if os.path.exists("desired.png"):
             os.remove("desired.png")
 
