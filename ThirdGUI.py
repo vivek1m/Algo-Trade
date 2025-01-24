@@ -10,9 +10,8 @@ class ThirdGUI(tk.Tk):
     def __init__(self):
         super().__init__()
 
-        # Full screen window size
         self.minsize(850, 600)
-        self.maxsize(self.winfo_screenwidth(), self.winfo_screenheight())  # Fullscreen
+        self.maxsize(self.winfo_screenwidth(), self.winfo_screenheight())  
         self.title("Welcome To Algo Trader")
         self.make_title()
 
@@ -20,7 +19,7 @@ class ThirdGUI(tk.Tk):
         tk.Label(
             self,
             text="Please Enter the Following Details",
-            font="CopperplateGothicBold 40 bold",  # Increased font size
+            font="CopperplateGothicBold 40 bold", 
             fg="white",
             bg="black",
         ).pack(side=tk.TOP, fill=tk.BOTH)
@@ -34,16 +33,15 @@ class ThirdGUI(tk.Tk):
         self.create_canvas()
 
     def create_canvas(self):
-        image_path = "C:\\Users\\HP\\OneDrive\\Desktop\\Stock Market\\center.png"  # Updated path
+        image_path = "C:\\Users\\HP\\OneDrive\\Desktop\\Stock Market\\center.png"  
         if not os.path.exists(image_path):
             tkmsg.showerror("Image Error", "Background image not found!")
             self.quit()
 
-        # Resize image to cover the full screen
         screen_width = self.winfo_screenwidth()
         screen_height = self.winfo_screenheight()
         image = Image.open(image_path)
-        image = image.resize((screen_width, screen_height), Image.LANCZOS)  # Using LANCZOS for better quality
+        image = image.resize((screen_width, screen_height), Image.LANCZOS)  
         self.bg_center = ImageTk.PhotoImage(image)
 
         self.canvas_center = tk.Canvas(
@@ -66,12 +64,11 @@ class ThirdGUI(tk.Tk):
         self.canvas_center.create_text(x, y, text=text, font=font, fill=fill)
 
     def create_buttons(self):
-        # Shadowed warning text
         self.add_shadowed_text(
             self.winfo_screenwidth() // 2,
-            self.winfo_screenheight() - 220,  # Moved up the warning text
+            self.winfo_screenheight() - 220,  
             text="!!  Make Sure You Enter Proper Details  !!\n",
-            font="Georgia 20 bold underline",  # Increased font size
+            font="Georgia 20 bold underline",  
             fill="white",
         )
 
@@ -114,11 +111,10 @@ class ThirdGUI(tk.Tk):
 
             self.submit()
 
-        # Continue button moved up further
         b1 = tk.Button(
             self,
             text="Continue",
-            font="Georgia 15",  # Increased font size
+            font="Georgia 15",  
             command=exception_handling,
             bg="mistyrose",
             fg="black",
@@ -129,7 +125,6 @@ class ThirdGUI(tk.Tk):
         )
         b1_canvas = self.canvas_center.create_window(self.winfo_screenwidth() // 2, self.winfo_screenheight() - 150, window=b1)  # Moved further up
 
-        # Adding aligned text with more vertical distance between texts
         self.add_shadowed_text(self.winfo_screenwidth() // 2, 60, text="Enter the Amount in Rupees\n", font="Georgia 25 bold", fill="white")  # Increased font size
         self.add_shadowed_text(self.winfo_screenwidth() // 2, 100, text="(Amount is the total Capital you want to INVEST)", font="Georgia 15", fill="white")  # Increased vertical spacing
         self.add_shadowed_text(self.winfo_screenwidth() // 2, 200, text="Enter the Time Period in Months\n", font="Georgia 25 bold", fill="white")  # Increased font size
@@ -143,7 +138,6 @@ class ThirdGUI(tk.Tk):
         self.periodval = tk.IntVar()
         self.rfval = tk.DoubleVar()
 
-        # Increasing the size of the input boxes
         amountentry = tk.Entry(self, textvariable=self.amountval, relief=tk.FLAT, font="Georgia 15")  # Increased font size
         periodentry = tk.Entry(self, textvariable=self.periodval, relief=tk.FLAT, font="Georgia 15")  # Increased font size
         rfentry = tk.Entry(self, textvariable=self.rfval, relief=tk.FLAT, font="Georgia 15")  # Increased font size
