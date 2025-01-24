@@ -12,24 +12,21 @@ class FourthGUI(tk.Tk):
 
         # Full screen
         self.geometry(f"{self.winfo_screenwidth()}x{self.winfo_screenheight()}")
-        self.configure(bg="#f5f5f5")  # Light grey background for a cleaner look
+        self.configure(bg="#f5f5f5")  
         self.title("Welcome To Algo Trader")
         self.make_title()
 
     def make_title(self):
-        # Title label with bold and sleek style
         tk.Label(self, text="Select the Desired Stock", font=("Arial", 30, "bold"), pady=0, padx=0,
                  fg="white", bg="#34495e").pack(side=tk.TOP, fill=tk.BOTH)
         self.create_frames()
 
     def create_frames(self):
-        # Center frame with a professional color
         self.center_frame = tk.Frame(self, borderwidth=3, relief=tk.FLAT, height=self.winfo_screenheight(), width=self.winfo_screenwidth(), bg="#f5f5f5")
         self.center_frame.pack(side=tk.LEFT, fill=tk.BOTH, padx=0, pady=0)
         self.create_canvas()
 
     def create_canvas(self):
-        # Use a professional background image
         image = Image.open("C:/Users/HP/OneDrive/Desktop/Stock Market/4.png")
         image = image.resize((self.winfo_screenwidth(), self.winfo_screenheight()))
         self.bg_center = ImageTk.PhotoImage(image)
@@ -50,7 +47,6 @@ class FourthGUI(tk.Tk):
         self.company = tk.StringVar()
         self.company.set("Name of the company")
 
-        # Apply style for comboboxes
         style = ttk.Style()
         style.configure("TCombobox",
                         font=("Arial", 16),
@@ -59,11 +55,9 @@ class FourthGUI(tk.Tk):
                         selectbackground="#3498db",
                         selectforeground="white")
 
-        # Company combobox with larger size
         combobox_company = ttk.Combobox(self, textvariable=self.company, values=company_names, state='readonly', height=30, width=50, style="TCombobox")
         combobox_company.pack(padx=20, pady=10)
 
-        # Center and text for "Stock of Your Choice"
         self.canvas_center.create_text(self.winfo_screenwidth() // 2, 120, text="Select the Stock of Your Choice", font=("Arial", 22, "bold"), fill="white")
         self.canvas_center.create_window(self.winfo_screenwidth() // 2, 170, window=combobox_company)
 
@@ -76,7 +70,6 @@ class FourthGUI(tk.Tk):
         self.begin_date = tk.StringVar()
         self.begin_date.set(df.columns[1])
 
-        # Start Date Combobox with larger size
         combobox_begin = ttk.Combobox(self, textvariable=self.begin_date, values=self.dates, state='readonly', height=30, width=50, style="TCombobox")
         combobox_begin.pack(padx=20, pady=10)
         self.canvas_center.create_window(self.winfo_screenwidth() // 4, 320, window=combobox_begin)
@@ -86,13 +79,11 @@ class FourthGUI(tk.Tk):
         self.end_date = tk.StringVar()
         self.end_date.set(df.columns[-1])
 
-        # End Date Combobox with larger size
         combobox_end = ttk.Combobox(self, textvariable=self.end_date, values=self.dates, state='readonly', height=30, width=50, style="TCombobox")
         combobox_end.pack(padx=20, pady=10)
 
         self.canvas_center.create_window(3 * self.winfo_screenwidth() // 4, 320, window=combobox_end)
 
-        # Exception handling and submission button with larger font and position
         def exception_handling():
             begin_index = self.dates.index(self.begin_date.get())
             end_index = self.dates.index(self.end_date.get())
@@ -101,10 +92,8 @@ class FourthGUI(tk.Tk):
             else:
                 self.submit()
 
-        # Submit button with updated color and size
         b1 = tk.Button(self, text="Continue", font=("Arial", 24, "bold"), command=exception_handling, bg="#2ecc71", fg="white", height=1, width=15, activebackground="#27ae60", borderwidth=3, relief=tk.RAISED)
         
-        # Place button correctly below comboboxes
         self.canvas_center.create_window(self.winfo_screenwidth() // 2, 550, window=b1)  # Adjusted vertical position to 550px
 
     def submit(self):
