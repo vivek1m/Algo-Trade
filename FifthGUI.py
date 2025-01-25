@@ -24,7 +24,6 @@ class FifthGUI(tk.Tk):
         self.maxsize(self.winfo_screenwidth(), self.winfo_screenheight())
         self.title("Welcome To Algo Trader")
         
-        # Ensure there's a valid stock price data to proceed
         try:
             if self.df.empty or len(self.df.columns) < 3:
                 raise ValueError("The stock data format seems incorrect or empty.")
@@ -43,7 +42,6 @@ class FifthGUI(tk.Tk):
         self.top()
 
     def configure_grid(self):
-        # Configure the main window grid to expand evenly
         self.grid_rowconfigure(0, weight=1, minsize=100)
         self.grid_rowconfigure(1, weight=3, minsize=100)
         self.grid_columnconfigure(0, weight=1, minsize=100)
@@ -82,7 +80,6 @@ class FifthGUI(tk.Tk):
         self.bottom(screen_width, screen_height)
 
     def bottom(self, screen_width, screen_height):
-        # Using PIL to load the image instead of tk.PhotoImage for more flexibility
         try:
             self.img = Image.open("recommend.png")
             self.img = ImageTk.PhotoImage(self.img)
@@ -90,7 +87,6 @@ class FifthGUI(tk.Tk):
             print(f"Error loading image: {str(e)}")
             self.img = None
 
-        # Canvas adjusted to fit the window and center the image
         can = tk.Canvas(self, bg="indigo", height=screen_height // 2, width=screen_width)
         can.grid(row=1, column=0, pady=10, sticky="nsew")
 
@@ -112,13 +108,11 @@ if __name__ == "__main__":
         period = 6
         rf = 5
 
-        # Fetch stock data
         df = algo.algo(Amount, period, rf)
 
         if df.empty:
             raise ValueError("The stock data returned is empty.")
 
-        # Initialize and run the GUI
         fifth = FifthGUI(df, Amount, period, rf)
         fifth.mainloop()
 

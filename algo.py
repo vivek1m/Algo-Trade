@@ -1,13 +1,11 @@
 import pandas as pd
 
 def algo(amount, tenure, risk_factor):
-    # Load data
     df_original = pd.read_csv('Data.csv')
     df = df_original.copy()
 
     last_date = df.columns[-1]
 
-    # Step 1: Filter by amount
     rows_to_drop = []
     for i in range(len(df)):
         if amount < float(df.loc[i, str(last_date)]):
@@ -15,7 +13,6 @@ def algo(amount, tenure, risk_factor):
     df.drop(rows_to_drop, axis=0, inplace=True)
     df.reset_index(drop=True, inplace=True)
 
-    # Step 2: Calculate percentage change and risk factor
     per_list = []
     rf_list = []
 
@@ -43,10 +40,8 @@ def algo(amount, tenure, risk_factor):
     df["Percentage"] = per_list
     df["rf"] = rf_list
 
-    # Fill NaN values
     df.fillna(0, inplace=True)
 
-    # Step 3: Filter by risk factor
     rows_to_drop_rf = []
     for i in range(len(df)):
         if risk_factor < df.loc[i, "rf"]:
@@ -54,11 +49,9 @@ def algo(amount, tenure, risk_factor):
     df.drop(rows_to_drop_rf, axis=0, inplace=True)
     df.reset_index(drop=True, inplace=True)
 
-    # Step 4: Sort by percentage and risk factor
     df = df.sort_values(["Percentage", "rf"], ascending=[False, True])
     df.reset_index(drop=True, inplace=True)
 
     return df
 
-# Example usage
 # print(algo(10000, 2, 30))

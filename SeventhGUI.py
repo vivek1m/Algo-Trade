@@ -64,8 +64,8 @@ class SeventhGUI(tk.Tk):
             self.canvas_center.create_text(self.winfo_width() // 2, self.winfo_height() // 4, text="Share your experience", font="Georgia 14 bold", fill="white")
 
             self.FeedBack = tk.StringVar()
-            self.feedback_text = tk.Text(self, height=2, width=30, wrap=tk.WORD, font="Georgia 12")  # Reduced size
-            self.canvas_center.create_window(self.winfo_width() // 2, self.winfo_height() // 3, window=self.feedback_text)  # Moved up a little
+            self.feedback_text = tk.Text(self, height=2, width=30, wrap=tk.WORD, font="Georgia 12")  
+            self.canvas_center.create_window(self.winfo_width() // 2, self.winfo_height() // 3, window=self.feedback_text) 
 
             self.feedback_button()
 
@@ -73,9 +73,8 @@ class SeventhGUI(tk.Tk):
 
     def feedback_button(self):
         def msg():
-            feedback = self.feedback_text.get("1.0", tk.END).strip()  # Get multi-line feedback
+            feedback = self.feedback_text.get("1.0", tk.END).strip()  
             if feedback != "":
-                # Show confirmation message
                 tkmsg.showinfo(title="Hope you enjoyed!", message="We will note your response!")
                 with open("feedback.txt", "a") as text_file:
                     text_file.write(feedback + "\n")
@@ -84,7 +83,7 @@ class SeventhGUI(tk.Tk):
                 tkmsg.showinfo(title="Hope you enjoyed!", message="Please Enter your FeedBack!")
 
         b2 = tk.Button(self, text="SUBMIT", font="Georgia 8", command=msg, bg="mistyrose", fg="black", height=1, width=15, activebackground="lawngreen", borderwidth=3, relief=tk.RAISED)
-        self.canvas_center.create_window(self.winfo_width() // 2, self.winfo_height() // 1.55, window=b2)  # Moved up a little
+        self.canvas_center.create_window(self.winfo_width() // 2, self.winfo_height() // 1.55, window=b2)  
 
         self.restart()
 
@@ -98,9 +97,8 @@ class SeventhGUI(tk.Tk):
             second = SecondGUI.SecondGUI()
             second.mainloop()
 
-        # Restart button
         b1 = tk.Button(self, text="Restart Again", font="Georgia 15", command=restarting, bg="mistyrose", fg="black", height=2, activebackground="lawngreen", borderwidth=4, relief=tk.RAISED)
-        self.canvas_center.create_window(self.winfo_width() // 2, self.winfo_height() // 1.25, window=b1)  # Moved up a little
+        self.canvas_center.create_window(self.winfo_width() // 2, self.winfo_height() // 1.25, window=b1)  
 
         self.quit_button()
 
@@ -109,7 +107,7 @@ class SeventhGUI(tk.Tk):
             self.destroy()
 
         b1 = tk.Button(self, text="QUIT", font="Georgia 18", command=end, bg="mistyrose", fg="black", height=1, activebackground="lawngreen", borderwidth=3, relief=tk.RAISED, width=15)
-        self.canvas_center.create_window(self.winfo_width() // 2, self.winfo_height() // 1.1, window=b1)  # Adjusted to center
+        self.canvas_center.create_window(self.winfo_width() // 2, self.winfo_height() // 1.1, window=b1)  
 
 if __name__ == "__main__":
     final = SeventhGUI()

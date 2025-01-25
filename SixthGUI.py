@@ -33,17 +33,15 @@ class SixthGUI(tk.Tk):
 
         def searching():
             query = f"{self.company} yahoo finance"
-            for j in search(query, num_results=1):  # Updated search call
+            for j in search(query, num_results=1):  
                 webbrowser.open(j)
 
         tk.Button(self.top_frame, text="Click Here", command=searching, font="Calibri 12 bold", padx=5, pady=5, bg="lavender").pack(fill=tk.BOTH)
         self.bottom()
 
     def bottom(self):
-        # Ensure the image file exists before attempting to load it
         if os.path.exists("desired.png"):
             try:
-                # Use PIL to open the image and then convert to a Tkinter-compatible format
                 pil_image = Image.open("desired.png")
                 self.img = ImageTk.PhotoImage(pil_image)
             except Exception as e:
@@ -51,7 +49,7 @@ class SixthGUI(tk.Tk):
                 self.img = None
         else:
             print("Image 'desired.png' not found, using placeholder")
-            self.img = None  # Or use a placeholder image
+            self.img = None  
 
         if self.img:
             tk.Label(self.bottom_frame, image=self.img, bg="indigo").pack(fill=tk.BOTH)
