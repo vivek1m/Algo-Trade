@@ -1,3 +1,4 @@
+# I am algo for the project 
 import pandas as pd
 
 def algo(amount, tenure, risk_factor):
