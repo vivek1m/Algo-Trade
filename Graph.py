@@ -1,3 +1,4 @@
+# graphs of the projects are made from here
 import pandas as pd
 from matplotlib import pyplot as plt
 
