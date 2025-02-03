@@ -5,7 +5,7 @@ from PIL import ImageTk, Image
 import ThirdGUI
 import FourthGUI
 import os
-
+  
 class SecondGUI(tk.Tk):
     def __init__(self):
         super().__init__()
