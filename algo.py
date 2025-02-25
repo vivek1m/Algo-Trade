@@ -55,4 +55,5 @@ def algo(amount, tenure, risk_factor):
 
     return df
 
+#Ex:
 # print(algo(10000, 2, 30))
