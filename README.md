@@ -66,4 +66,4 @@ This project is licensed under the MIT License.
 Contributions are welcome! Feel free to fork the repo and submit a pull request.
 
 ## 📧 Contact
-For queries or suggestions, reach out at: your.email@example.com
+For queries or suggestions, reach out at: viveksharma12347620@gmail.com
