@@ -3,6 +3,8 @@ import tkinter as tk
 import tkinter.messagebox as tkmsg
 from tkinter import ttk
 import SecondGUI
+import tkinter as tk
+from tkinter import ttk, messagebox, filedialog, colorchooser, simpledialog, font
 
 class FirstGUI(tk.Tk):
     def __init__(self):
