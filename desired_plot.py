@@ -2,7 +2,7 @@ import pandas as pd
 from matplotlib import pyplot as plt
 
 def desired_plot(company,start,end):
-    df_original=pd.read_csv(r'C:\Users\HP\OneDrive\Desktop\Algo Trade\Data.csv')
+    df_original=pd.read_csv(r'C:\Users\HP\OneDrive\Desktop\Stock Market\Data.csv')
     df=df_original.copy(True)
     
     index=0

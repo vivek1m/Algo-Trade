@@ -13,7 +13,7 @@ class SecondGUI(tk.Tk):
         self.toggle_fullscreen()
         self.config(bg="#e4f1fe")
 
-        self.iconbitmap(r"C:\Users\HP\Downloads\4288596analyticschartgrowthincreasingstocks-115760_115753.ico")
+        self.iconbitmap(r"C:\Users\HP\OneDrive\Desktop\Stock Market\4288596analyticschartgrowthincreasingstocks-115760_115753.ico")
         self.make_title()
 
     def toggle_fullscreen(self, event=None):
