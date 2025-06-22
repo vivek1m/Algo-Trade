@@ -140,5 +140,16 @@ class FirstGUI(tk.Tk):
             bg="#1F4E79",
             fg="white"
         ).pack(pady=5)
+       def submission(self):
+        if any(var.get() == 0 for var in self.cbVar):
+            tkmsg.showerror(title="Warning", message="Please accept all the Terms and Conditions")
+        else:
+            self.destroy()
+            second = SecondGUI.SecondGUI()
+            second.mainloop()
+
+if __name__ == "__main__":
+    app = FirstGUI()
+    app.mainloop()     
 
 
