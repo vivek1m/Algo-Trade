@@ -1,7 +1,7 @@
 import tkinter as tk
 import tkinter.messagebox as tkmsg
 from tkinter import ttk
-import SecondGUI
+import SecondGUI  # Make sure this exists
 
 class FirstGUI(tk.Tk):
     def __init__(self):
@@ -71,6 +71,12 @@ class FirstGUI(tk.Tk):
         def on_check():
             chbox["fg"] = "green" if all(var.get() == 1 for var in self.cbVar) else "red"
 
+        def toggle_all():
+            check_all = select_all_var.get()
+            for var in self.cbVar:
+                var.set(check_all)
+            on_check()
+
         terms = [
             "I agree to the Terms and Conditions",
             "I acknowledge that investments in stock markets involve risks",
@@ -79,15 +85,14 @@ class FirstGUI(tk.Tk):
             "I agree to comply with all applicable laws and regulations while using this software",
             "I acknowledge that this software is a tool for market analysis and not investment advice"
         ]
+
         large_terms = [
             "AGREEMENT TO TERMS OF SERVICE IS REQUIRED BEFORE USING THIS SOFTWARE.",
             "UNDERSTANDING RISKS: STOCK MARKET INVESTMENTS CAN BE HIGHLY VOLATILE AND RISKY."
         ]
 
-        colors = ["red"] * len(terms)
-        
         self.cbVar = []
-        
+
         for term in large_terms:
             tk.Label(
                 terms_frame,
@@ -98,20 +103,33 @@ class FirstGUI(tk.Tk):
                 wraplength=850,
                 justify="left"
             ).pack(anchor="w", padx=20, pady=10)
-        
+
         for i, text in enumerate(terms):
             var = tk.IntVar()
             self.cbVar.append(var)
             chbox = tk.Checkbutton(
                 terms_frame,
                 variable=var,
-                text=terms[i],
+                text=text,
                 command=on_check,
-                fg=colors[i],
+                fg="red",
                 bg="#f9f9f9",
                 font="Helvetica 12"
             )
             chbox.pack(anchor="w", padx=20, pady=5)
+
+        # ✅ "Select All Terms & Conditions" checkbox
+        select_all_var = tk.IntVar()
+        select_all_cb = tk.Checkbutton(
+            terms_frame,
+            text="Select All Terms & Conditions",
+            variable=select_all_var,
+            command=toggle_all,
+            font="Helvetica 12 bold",
+            bg="#f9f9f9",
+            fg="green"
+        )
+        select_all_cb.pack(anchor="w", padx=20, pady=10)
 
         submit_button = tk.Button(
             terms_frame,
