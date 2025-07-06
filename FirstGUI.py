@@ -170,3 +170,5 @@ class FirstGUI(tk.Tk):
 if __name__ == "__main__":
     app = FirstGUI()
     app.mainloop()
+#     app.mainloop()
+# This will run the FirstGUI application when this script is executed directly.
